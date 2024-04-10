@@ -17,8 +17,10 @@ export interface Movie {
     imdb_id?: string | '';
 }
 export interface FullMovie extends Movie {
-    cast: Array<Cast>;
-    crew: Array<Crew>;
+    credits: {
+        cast: Array<Cast>;
+        crew: Array<Crew>;
+    }
     images: Array<Image>;
     keywords: Array<Keyword>;
     reviews: Array<Review>;

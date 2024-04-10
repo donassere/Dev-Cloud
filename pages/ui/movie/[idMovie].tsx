@@ -15,6 +15,8 @@ const MovieDetails = () => {
         const response = await fetch(`/api/movies/${idMovie}`);
         const data = await response.json();
         setMovie(data.data.movie);
+        console.log(movie);
+        
       } catch (error) {
         console.error('Error fetching movie details:', error);
       }
@@ -51,6 +53,26 @@ const MovieDetails = () => {
             <p><span className="font-bold">Runtime:</span> {movie.runtime} minutes</p>
             <p><span className="font-bold">Status:</span> {movie.status}</p>
           </div>
+        </div>
+      </div>
+      <div className="lg:w-full">
+        <div className="text-2xl font-bold mb-4">Cast</div>
+          <div className="flex flex-wrap justify-start items-center gap-4">
+            {movie.credits.cast.map((actor) => (
+              <div key={actor.id} className="flex flex-col items-center">
+                {actor.profile_path && (
+                <img
+                  src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
+                  alt={actor.name}
+                  className="w-24 h-24 object-cover rounded-full"
+                />
+                )}
+                <div className="mt-2 text-center">
+                  <p className="text-lg font-semibold">{actor.name}</p>
+                  <p className="text-sm text-gray-500">{actor.character}</p>
+                </div>
+              </div>
+            ))}
         </div>
       </div>
       <div className="lg:w-full">
