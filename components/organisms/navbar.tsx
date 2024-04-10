@@ -5,7 +5,7 @@ function Navbar() {
     const [searchQuery, setSearchQuery] = useState('');
     const router = useRouter();
 
-    const handleSearch = async (e) => {
+    const handleSearch = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         if (searchQuery.trim() !== '') {
             try {

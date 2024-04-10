@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { ConfigService } from "../../../../services/config.service";
+import { Image } from "../../../../types/movie";
 
 /**
  * @swagger
@@ -23,6 +24,13 @@ import { ConfigService } from "../../../../services/config.service";
  *              200:
  *                  description: Hello Movies
  */
+
+type ResponseData = {
+    status: number,
+    data?: { images: Image[] | string }
+    method?: string,
+    error?: string
+}
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<ResponseData>) {
     const idMovie = parseInt(req.query.idMovie as string, 10);

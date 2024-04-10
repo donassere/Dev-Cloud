@@ -23,7 +23,10 @@ const App: NextPageWithLayout = () => {
 
                 const videoResponse = await fetch(`/api/movies/${randomMovie.id}/videos`);
                 const videoData = await videoResponse.json();
-                setVideos(videoData.data);
+                setVideos(videoData.data.results);
+                console.log(videoData);
+                
+                
             } catch (error) {
                 console.error('Error fetching top rated movies:', error);
             }
@@ -32,7 +35,7 @@ const App: NextPageWithLayout = () => {
         fetchTopRatedMovies();
     }, []);
 
-    const renderStars = (rating) => {
+    const renderStars = (rating: number) => {
         const stars = [];
         for (let i = 1; i <= 5; i++) {
             if (i <= rating / 2) {
@@ -54,7 +57,7 @@ const App: NextPageWithLayout = () => {
             <h1 className="text-2xl font-bold mb-4">Top Rated Movies</h1>
             <div className="flex overflow-x-auto space-x-4 pb-4">
                 {topRatedMovies.map((movie, index) => (
-                    <Link key={index} href={`/ui/${movie.id}`}>
+                    <Link key={index} href={`/ui/movie/${movie.id}`}>
                     <div className="flex flex-col items-center">
                         <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} className="w-32 h-auto object-cover" />
                         <p className="text-center mt-2 w-32 truncate">{movie.title}</p>
