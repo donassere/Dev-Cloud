@@ -7,7 +7,6 @@ jobs:
     steps:
       - checkout
       - run: echo "Deploying..."
-    when: on_success
   deploy_prod:
     docker:
       - image: cimg/node:20.5.0
@@ -35,7 +34,7 @@ workflows:
   version: 2
   build_test_deploy:
     jobs:
-      - deploy:
+      - deploy_prod:
           filters:
             branches:
               only: /main/
