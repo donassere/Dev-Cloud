@@ -21,9 +21,8 @@ import { ConfigService } from "../../../../services/config.service";
  *                  default: 'en-US'
  *          responses:
  *              200:
- *                  description: Hello Movies
+ *                  description: Success
  */
-
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const movieId = req.query.movieId as string;
     const language = req.query.language || 'en-US';

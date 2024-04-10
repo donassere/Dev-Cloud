@@ -12,7 +12,7 @@ export const ConfigService = {
                 videos: "https://api.themoviedb.org/3/movie/{movie_id}/videos",
                 recommendations: "https://api.themoviedb.org/3/movie/{movie_id}/recommendations",
                 search: "https://api.themoviedb.org/3/search/movie",
-                image: "https://api.themoviedb.org/3/movie/{movie_id}/images",
+                images: "https://api.themoviedb.org/3/movie/{movie_id}/images",
                 credits: "https://api.themoviedb.org/3/movie/{movie_id}/credits"
             },
             series : {
@@ -20,6 +20,10 @@ export const ConfigService = {
                 serie: "https://api.themoviedb.org/3/tv",
                 popular: "https://api.themoviedb.org/3/tv/popular",
                 top_rated: "https://api.themoviedb.org/3/tv/top_rated",
+            },
+            peoples : {
+                popular : "https://api.themoviedb.org/3/person/popular",
+                person : "https://api.themoviedb.org/3/person/{person_id}"
             }
         },
         keys: {

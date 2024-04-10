@@ -3,6 +3,7 @@ import type { NextPageWithLayout } from './_app';
 import { Movie } from '../types/movie';
 import MovieLine from './ui/movies';
 import MovieVideos from './ui/video';
+import Link from 'next/link';
 
 const App: NextPageWithLayout = () => {
     const [topRatedMovies, setTopRatedMovies] = useState<Movie[]>([]);
@@ -53,14 +54,16 @@ const App: NextPageWithLayout = () => {
             <h1 className="text-2xl font-bold mb-4">Top Rated Movies</h1>
             <div className="flex overflow-x-auto space-x-4 pb-4">
                 {topRatedMovies.map((movie, index) => (
-                    <div key={index} className="flex flex-col items-center">
+                    <Link key={index} href={`/ui/${movie.id}`}>
+                    <div className="flex flex-col items-center">
                         <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} className="w-32 h-auto object-cover" />
                         <p className="text-center mt-2 w-32 truncate">{movie.title}</p>
                         <div className="flex mt-1">
                             {renderStars(movie.vote_average)}
                         </div>
                     </div>
-                ))}
+                </Link>
+                 ))}
             </div>
             <h1 className="text-2xl font-bold mb-4">Discover</h1>
             <MovieLine />

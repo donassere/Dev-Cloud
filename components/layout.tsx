@@ -1,13 +1,18 @@
 import Navbar from "./organisms/navbar";
 import Footer from "./organisms/footer";
+import { ReactNode } from "react";
 
 
-export default function Layout({ children }) {
+interface LayoutProps {
+    children: ReactNode;
+}
+
+export default function Layout({ children }: LayoutProps) {
     return (
         <>
             <Navbar />
             <main className={"container"}>{children}</main>
             <Footer />
         </>
-    )
+    );
 }

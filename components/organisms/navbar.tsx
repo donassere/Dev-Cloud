@@ -5,10 +5,23 @@ function Navbar() {
     const [searchQuery, setSearchQuery] = useState('');
     const router = useRouter();
 
-    const handleSearch = (e) => {
+    const handleSearch = async (e) => {
         e.preventDefault();
         if (searchQuery.trim() !== '') {
-            router.push(`/search?query=${encodeURIComponent(searchQuery)}`);
+            try {
+                const response = await fetch(`/api/movies/search?query=${encodeURIComponent(searchQuery)}`);
+                const data = await response.json();
+                console.log(data);
+                
+                
+                if (data.results && data.results.length > 0) {
+                    router.push(`/movie/${data.results[0].id}`);
+                } else {
+                    console.log("Aucun film trouvé");
+                }
+            } catch (error) {
+                console.error('Error searching movies:', error);
+            }
         }
     };
 
@@ -33,6 +46,7 @@ function Navbar() {
             </div>
             <div className="hidden lg:block">
                 <a href="/" className="text-white hover:bg-secondary hover:text-primary-foreground px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                <a href="/ui/popular_people" className="text-white hover:bg-secondary hover:text-primary-foreground px-3 py-2 rounded-md text-sm font-medium">Popular Actors</a>
                 <a href="/auth/sign-in" className="text-white hover:bg-secondary hover:text-primary-foreground px-3 py-2 rounded-md text-sm font-medium">Sign In</a>
             </div>
         </nav>
@@ -40,4 +54,5 @@ function Navbar() {
 }
 
 export default Navbar;
+
 
