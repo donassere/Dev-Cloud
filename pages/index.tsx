@@ -105,8 +105,9 @@ const App: NextPageWithLayout = () => {
             {showPopup && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
                     <div className="bg-white p-8 rounded-md">
-                        <h2 className="text-xl font-bold mb-4">Publicité pour la lessive pour pull trempé dans du chocolat</h2>
+                        <h2 className="text-xl text-amber-900 font-bold mb-4">Publicité pour lessive</h2>
                         <p className="text-gray-700">Découvrez notre nouvelle lessive qui nettoie efficacement les pulls trempés dans du chocolat !</p>
+                        <img src="/th.jpg" alt="image" className="w-50 mr-2" />
                         <button onClick={() => setShowPopup(false)} className="mt-4 px-4 py-2 bg-primary text-white rounded-md">Fermer</button>
                     </div>
                 </div>
