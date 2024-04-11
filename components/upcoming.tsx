@@ -35,7 +35,7 @@ export const Upcomming = () => {
               />
               {startDate && (
                 <p
-                className="absolute top-1/2 left-1/4 text-white bg-red-500 py-2 px-4 rounded-lg text-xl font-bold animate-ping"
+                className="absolute top-1/2 left-1/4 text-white bg-red-500 py-2 px-4 rounded-lg text-xl font-bold animate-pulse animate-bounce"
                 style={{ zIndex: 1, animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite, bounce 1s infinite', }}
               >
                 {startDate}
