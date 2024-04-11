@@ -47,7 +47,7 @@ const App: NextPageWithLayout = () => {
                 stars.push(
                     <span
                         key={i}
-                        className="text-yellow-500 inline-block"
+                        className="text-yellow-500 inline-block animate-ping"
                         style={{
                             animation: `ping 1s cubic-bezier(0, 0, 0.2, 1) infinite`,
                             animationDelay: `${delay}s`
