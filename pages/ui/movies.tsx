@@ -21,24 +21,17 @@ const MovieLine = () => {
   }, []);
 
   return (
-    <div className="flex overflow-x-auto space-x-4 h-96">
+    <div className="flex overflow-x-auto space-x-4 pb-4">
       {movies &&
         movies.map((movie, index) => (
           <Link key={index} href={`/ui/movie/${movie.id}`}>
-            <div className="flex-shrink-0 bg-card p-4 rounded-lg shadow-md cursor-pointer transform transition-transform duration-300 hover:scale-110 w-40">
+            <div className="flex-shrink-0 bg-card p-4 rounded-lg shadow-md w-40">
               <div className="relative">
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                   alt={movie.title}
-                  className="w-full h-56 object-cover mb-2"
+                  className="w-32 h-56 object-cover mb-2 cursor-pointer transform transition-transform duration-300 hover:scale-110"
                 />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                    alt={movie.title}
-                    className="absolute inset-0 object-cover w-full h-full"
-                  />
-                </div>
               </div>
               <p className="text-sm font-medium text-center overflow-hidden whitespace-nowrap overflow-ellipsis">{movie.title}</p>
             </div>

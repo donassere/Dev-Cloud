@@ -3,6 +3,7 @@ import fetch from 'node-fetch';
 import { FullMovie } from '../../../types/movie';
 import { useRouter } from 'next/router';
 import MovieImages from '../../../components/movie_images';
+import Link from 'next/link';
 
 const MovieDetails = () => {
   const router = useRouter();
@@ -15,8 +16,6 @@ const MovieDetails = () => {
         const response = await fetch(`/api/movies/${idMovie}`);
         const data = await response.json();
         setMovie(data.data.movie);
-        console.log(movie);
-        
       } catch (error) {
         console.error('Error fetching movie details:', error);
       }
@@ -57,15 +56,17 @@ const MovieDetails = () => {
       </div>
       <div className="lg:w-full">
         <div className="text-2xl font-bold mb-4">Cast</div>
-          <div className="flex flex-wrap justify-start items-center gap-4">
+          <div className="flex items-center gap-4 overflow-x-auto">
             {movie.credits.cast.map((actor) => (
-              <div key={actor.id} className="flex flex-col items-center">
+              <div key={actor.id} className="flex-shrink-0 flex flex-col items-center">
                 {actor.profile_path && (
-                <img
-                  src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
-                  alt={actor.name}
-                  className="w-24 h-24 object-cover rounded-full"
-                />
+                  <Link key={actor.id} href={`/ui/actor/${actor.id}`}>
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
+                      alt={actor.name}
+                      className="w-24 h-24 object-cover rounded-full"
+                    />
+                  </Link>
                 )}
                 <div className="mt-2 text-center">
                   <p className="text-lg font-semibold">{actor.name}</p>
@@ -73,7 +74,7 @@ const MovieDetails = () => {
                 </div>
               </div>
             ))}
-        </div>
+          </div>
       </div>
       <div className="lg:w-full">
         <div className="text-2xl font-bold mb-4">Images</div>
